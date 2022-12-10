@@ -33,7 +33,7 @@ interface ContentCardProps {
   }
 }
 
-const href = 'http://localhost:5000/' // for local development
+const ROOT_LINK = location.href
 
 const ContentCard: FC<ContentCardProps> = ({ content }) => {
   const { onCopy, value, setValue, hasCopied } = useClipboard('')
@@ -96,8 +96,8 @@ const ContentCard: FC<ContentCardProps> = ({ content }) => {
           </Box>
           <Box>
             <Text fontSize='md' fontWeight='bold'>
-              <Link href={`${href}${content.short}`} isExternal>
-                {`${href}${content.short}`}
+              <Link href={`${ROOT_LINK}${content.short}`} isExternal>
+                {`${ROOT_LINK}${content.short}`}
               </Link>
               {hasCopied ? (
                 <CheckIcon ml='0.5rem' color='green.500' />
@@ -106,7 +106,7 @@ const ContentCard: FC<ContentCardProps> = ({ content }) => {
                   ml='0.5rem'
                   cursor='pointer'
                   onClick={() => {
-                    setValue(`${href}${content.short}`)
+                    setValue(`${ROOT_LINK}${content.short}`)
                   }}
                 />
               )}

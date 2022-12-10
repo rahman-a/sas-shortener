@@ -48,7 +48,6 @@ const Dashboard = () => {
 
   const refineQueryData = (data: any) => {
     const refinedData = data.pages.map((page: any) => page.urls)
-    console.log('refinedData: ', refinedData)
     return refinedData.flat()
   }
 

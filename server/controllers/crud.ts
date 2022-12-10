@@ -58,7 +58,7 @@ export const getOneUrl = async (url: URL): Promise<URL | undefined> => {
 export const getAllUrls = async (sort: SortUrls): Promise<URL[]> => {
   if (!sort.createdAt) sort.createdAt = 'asc'
   if (!sort.page) sort.page = 1
-  const urlsPerPage = 5
+  const urlsPerPage = 10
   const skip = (sort.page - 1) * urlsPerPage
   const urls = await fsPromise.readFile(filePath, 'utf-8')
   let parsedUrls = JSON.parse(urls)

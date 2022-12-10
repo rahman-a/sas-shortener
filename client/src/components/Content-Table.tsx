@@ -26,7 +26,7 @@ import { useURLContext, ActionType } from '../context/url'
 import { deleteUrl } from '../api'
 import DeleteButton from './Delete-Button'
 
-const href = 'http://localhost:5000/' // for local development
+const ROOT_LINK = location.href
 
 const Content = () => {
   const { onCopy, value, setValue, hasCopied } = useClipboard('')
@@ -93,17 +93,17 @@ const Content = () => {
                 <ExternalLinkIcon mx='2px' />
               </Td>
               <Td>
-                <Link isExternal href={`${href}${url.short}`} width='2xl'>
-                  {`${href}${url.short}`}
+                <Link isExternal href={`${ROOT_LINK}${url.short}`} width='2xl'>
+                  {`${ROOT_LINK}${url.short}`}
                 </Link>
-                {hasCopied && value === `${href}${url.short}` ? (
+                {hasCopied && value === `${ROOT_LINK}${url.short}` ? (
                   <CheckIcon ml='0.5rem' color='green.500' />
                 ) : (
                   <CopyIcon
                     ml='0.5rem'
                     cursor='pointer'
                     onClick={() => {
-                      setValue(`${href}${url.short}`)
+                      setValue(`${ROOT_LINK}${url.short}`)
                     }}
                   />
                 )}

@@ -55,7 +55,6 @@ export const login = async (
 export const getUrls = async (
   sort: QueryFunctionContext
 ): Promise<{ success: boolean; urls: URL[] }> => {
-  console.log('sort: ', sort)
   const query: SortQuery = {}
   const sortQuery: SortQuery = sort.queryKey[1] as SortQuery
   if (sortQuery.createdAt) query['createdAt'] = sortQuery.createdAt
