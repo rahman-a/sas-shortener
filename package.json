@@ -10,7 +10,8 @@
     "client": "npm run dev --prefix client",
     "server:build": "rimraf ./build && tsc",
     "client:build": "npm run build --prefix client",
-    "start": "npm run server:build && npm run client:build && node build/index.js"
+    "build": "npm run server:build && npm run client:build",
+    "start": "node ./build/index.js"
   },
   "keywords": [],
   "author": "",
