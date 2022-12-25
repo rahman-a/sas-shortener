@@ -1,4 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
+import { logStream } from '../index.js'
+
 export const notFound = async (
   req: Request,
   res: Response,
@@ -21,6 +23,7 @@ export const errorHandler = async (
   }
   const statusCode = res.statusCode === 200 ? 500 : res.statusCode
   let errorObject = {}
+  logStream.write(`${err.stack}\n`)
   if (process.env.NODE_ENV === 'development') {
     errorObject = {
       success: false,

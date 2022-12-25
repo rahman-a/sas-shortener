@@ -14,6 +14,7 @@ dist-ssr
 *.local
 .env
 test.js
+demo.js
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

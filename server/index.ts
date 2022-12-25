@@ -1,8 +1,9 @@
 import express, { Express } from 'express'
+import fs from 'fs'
+import path from 'path'
 import cookieParser from 'cookie-parser'
 import dotenv from 'dotenv'
 import cors from 'cors'
-import path from 'path'
 import morgan from 'morgan'
 import mongoose from 'mongoose'
 import fileUpload from 'express-fileupload'
@@ -17,6 +18,11 @@ import { requestShortUrl } from './controllers/urls.js'
 dotenv.config()
 
 const app: Express = express()
+
+export const logStream = fs.createWriteStream(
+  path.join(process.cwd(), 'server/logs/access.log'),
+  { flags: 'a' }
+)
 
 app.use(express.json())
 app.use(cookieParser())
@@ -34,6 +40,8 @@ app.use(
 )
 
 app.use(morgan('dev'))
+
+app.use(morgan('combined', { stream: logStream }))
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(process.cwd(), 'client', 'dist')))
