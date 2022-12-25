@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useRef } from 'react'
 import {
   Popover,
   PopoverTrigger,
@@ -13,7 +13,6 @@ import {
   Spinner,
 } from '@chakra-ui/react'
 import { DeleteIcon } from '@chakra-ui/icons'
-
 interface DeleteButtonProps {
   onDelete: () => void
   isLoading: boolean
@@ -26,19 +25,16 @@ const DeleteButton = ({ onDelete, isLoading }: DeleteButtonProps) => {
       {({ isOpen, onClose }) => (
         <>
           <PopoverTrigger>
-            <IconButton
-              aria-label='Delete'
-              icon={<DeleteIcon />}
-              color='red.500'
-              size={'sm'}
-            />
+            <Button colorScheme='red' size='sm' leftIcon={<DeleteIcon />}>
+              Delete
+            </Button>
           </PopoverTrigger>
           <Portal>
             <PopoverContent>
               <PopoverCloseButton />
               <PopoverBody>
                 <Box>
-                  Are you sure you want to delete this URL? This action cannot
+                  Are you sure you want to delete this item? This action can't
                   be undone.
                 </Box>
                 <HStack spacing={4}>
