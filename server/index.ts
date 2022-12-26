@@ -23,12 +23,13 @@ export const logStream = fs.createWriteStream(
   path.join(process.cwd(), 'server/logs/access.log'),
   { flags: 'a' }
 )
-
+const origins =
+  process.env.NODE_ENV === 'production' ? process.env.ORIGINS : '*'
 app.use(express.json())
 app.use(cookieParser())
 app.use(
   cors({
-    origin: ['http://localhost:8000', 'http://localhost:3000'],
+    origin: origins,
     credentials: true,
   })
 )
@@ -42,16 +43,19 @@ app.use(
 app.use(morgan('dev'))
 
 app.use(morgan('combined', { stream: logStream }))
-
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(process.cwd(), 'client', 'dist')))
-  app.get('/', (req, res) => {
-    res
-      .status(200)
-      .sendFile(path.join(process.cwd(), 'client', 'dist', 'index.html'))
+  const routes = [
+    '/',
+    '/login',
+    '/shortener',
+    '/contact-list',
+    '/job-management',
+  ]
+  app.get(routes, (req, res) => {
+    res.sendFile(path.join(process.cwd(), 'client', 'dist', 'index.html'))
   })
 }
-
 // serve static files
 app.use(
   '/api/assets',

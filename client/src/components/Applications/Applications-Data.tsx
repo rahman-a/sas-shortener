@@ -69,7 +69,7 @@ const ApplicantsData = () => {
       return (
         <Alert status='info' display='flex' justifyContent='center'>
           <AlertIcon />
-          <AlertTitle>No Contacts Found</AlertTitle>
+          <AlertTitle>No Applications Found</AlertTitle>
         </Alert>
       )
     }

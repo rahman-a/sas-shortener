@@ -65,7 +65,7 @@ const JobData = () => {
       return (
         <Alert status='info' display='flex' justifyContent='center'>
           <AlertIcon />
-          <AlertTitle>No Contacts Found</AlertTitle>
+          <AlertTitle>No Jobs Found</AlertTitle>
         </Alert>
       )
     }
