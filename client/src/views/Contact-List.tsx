@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   Box,
   Flex,
@@ -70,7 +70,7 @@ const ContactList = () => {
         <Alert status='error' display='flex' justifyContent='center'>
           <AlertIcon />
           <AlertDescription>
-            'Something went wrong, please try again'
+            Something went wrong, please try again
           </AlertDescription>
         </Alert>
       )

@@ -25,6 +25,7 @@ export const logStream = fs.createWriteStream(
 )
 const origins =
   process.env.NODE_ENV === 'production' ? process.env.ORIGINS : '*'
+console.log('🚀 ~ file: index.ts:27 ~ origins', origins)
 app.use(express.json())
 app.use(cookieParser())
 app.use(

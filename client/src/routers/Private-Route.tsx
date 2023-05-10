@@ -1,4 +1,3 @@
-import { useContext } from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
 import { useUserContext } from '../context/user'
 import Layout from '../components/Layout'

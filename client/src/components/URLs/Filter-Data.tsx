@@ -1,4 +1,4 @@
-import React, { FC, FormEvent, useEffect, useState } from 'react'
+import React, { FC, FormEvent } from 'react'
 import {
   Modal,
   ModalContent,

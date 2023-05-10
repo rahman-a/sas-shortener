@@ -34,6 +34,7 @@ export const getAllJobs = asyncHandler(async (req, res) => {
   if (jobType) queries.jobType = jobType
   if (country) queries.country = { $regex: country, $options: 'i' }
   if (salary) queries.salary = { $lte: Number(salary) }
+  console.log('🚀  queries', queries)
   const jobs = await Job.find(queries)
     .limit(10)
     .skip(10 * (Number(page) - 1))
